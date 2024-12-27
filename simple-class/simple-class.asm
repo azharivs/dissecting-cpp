@@ -121,50 +121,37 @@ Disassembly of section .text:
     1164:	e9 77 ff ff ff       	jmpq   10e0 <register_tm_clones>
 
 0000000000001169 <main>:
-    void function1(){
-        x ++;
-    }
-};
-
-int main(){
     1169:	f3 0f 1e fa          	endbr64 
     116d:	55                   	push   %rbp
     116e:	48 89 e5             	mov    %rsp,%rbp
     1171:	48 83 ec 10          	sub    $0x10,%rsp
-    Base *ptr = new Base();    
     1175:	bf 04 00 00 00       	mov    $0x4,%edi
     117a:	e8 e1 fe ff ff       	callq  1060 <operator new(unsigned long)@plt>
     117f:	c7 00 00 00 00 00    	movl   $0x0,(%rax)
     1185:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
-    ptr->function1();
     1189:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
     118d:	48 89 c7             	mov    %rax,%rdi
     1190:	e8 1d 00 00 00       	callq  11b2 <Base::function1()>
-    delete ptr;
     1195:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
     1199:	48 85 c0             	test   %rax,%rax
     119c:	74 0d                	je     11ab <main+0x42>
     119e:	be 04 00 00 00       	mov    $0x4,%esi
     11a3:	48 89 c7             	mov    %rax,%rdi
     11a6:	e8 c5 fe ff ff       	callq  1070 <operator delete(void*, unsigned long)@plt>
-    return 0;
     11ab:	b8 00 00 00 00       	mov    $0x0,%eax
     11b0:	c9                   	leaveq 
     11b1:	c3                   	retq   
 
 00000000000011b2 <Base::function1()>:
-    void function1(){
     11b2:	f3 0f 1e fa          	endbr64 
     11b6:	55                   	push   %rbp
     11b7:	48 89 e5             	mov    %rsp,%rbp
     11ba:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
-        x ++;
     11be:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
     11c2:	8b 00                	mov    (%rax),%eax
     11c4:	8d 50 01             	lea    0x1(%rax),%edx
     11c7:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
     11cb:	89 10                	mov    %edx,(%rax)
-    }
     11cd:	90                   	nop
     11ce:	5d                   	pop    %rbp
     11cf:	c3                   	retq   
